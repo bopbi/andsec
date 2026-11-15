@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Victim Lab</string>
+    <string name="app_name">Deeplink Victim Lab</string>
     <string name="lab_title">Victim Lab — Browser Login</string>
     <string name="lab_description">Synthetic data only. No real account or identity provider is used.</string>
     <string name="vulnerable_flow">Vulnerable token redirect</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Attacker Lab</string>
+    <string name="app_name">Deeplink Attacker Lab</string>
     <string name="lab_title">Attacker Lab — Redirect Control</string>
     <string name="lab_description">Synthetic local responses only. Intercepted values are redacted and never persisted or forwarded.</string>
     <string name="initial_status">No intercepted lab response.</string>
