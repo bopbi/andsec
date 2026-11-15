@@ -29,6 +29,16 @@ The vulnerable path is `Victim MainActivity -> Android intent resolution -> matc
 
 Explicit routing selects a destination; it does not authenticate callers or validate direct invocations of an exported activity. Victim `ReportActivity` remains exported in both variants to isolate sender routing, and its direct-invocation limitation is therefore separate from this lesson.
 
+## Secure development checklist
+
+When designing intent-based communication:
+
+- Use an explicit component when the destination is known. If implicit routing is required, assume a matching app can receive the request and omit sensitive extras, URIs, and capabilities.
+- Make activities, services, and broadcast receivers non-exported by default. Where cross-app access is necessary, expose the smallest possible contract and use an appropriate component permission, such as a signature-level permission between apps you control.
+- Treat actions, extras, URIs, and nested intents from external callers as untrusted. Validate their structure, allowed values, and lifecycle state before using them, and never log arbitrary payloads.
+- Do not confuse an explicit outgoing intent with caller authentication. An exported receiver can still be invoked directly, so it must independently enforce permissions and authorization before privileged work.
+- Verify both routing and receiving behavior: test unintended handlers, direct invocation, missing or malformed extras, replay where relevant, and the absence of required permissions, as well as legitimate communication.
+
 ## Build and static checks
 
 Use each standalone project's Gradle wrapper:

@@ -20,6 +20,17 @@ The user must manually enable Attacker Lab's accessibility service in Android sy
 
 The victim's accessibility-visibility switch is an experiment, not a security control. Hiding a button from accessibility can prevent legitimate assistive-technology use and must not be treated as user authorization.
 
+## Secure development checklist
+
+When applying this lesson to an app:
+
+- Enforce authentication and authorization for sensitive actions in the app and on the backend; do not assume that a visible button tap by itself proves who initiated an action or their authorization.
+- Never use `importantForAccessibility`, hidden controls, obfuscated labels, or click-source heuristics as a security boundary. These approaches do not replace authorization and can exclude legitimate assistive-technology users.
+- Add confirmation or step-up authentication where the risk of an action justifies it, while keeping the flow accessible. High-value backend operations still require server-side authorization.
+- Treat UI content available to accessibility services as visible to services the user has authorized. Avoid displaying secrets unnecessarily, but do not present this as a way to block a full-capability service.
+- If you build an accessibility service, request only the packages, event types, and capabilities it needs; explain their purpose clearly and avoid collecting unrelated UI content.
+- Test sensitive workflows with an authorized accessibility service to understand exposure, and test normal assistive-technology use to ensure a defensive change does not break accessibility.
+
 ## Build and static checks
 
 Run each project's own Gradle wrapper:

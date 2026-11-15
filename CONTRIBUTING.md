@@ -13,6 +13,18 @@ AndSec welcomes small, well-documented educational security labs and fixes to ex
 
 Prefer the smallest demonstration that proves the concept, with vulnerable and hardened variants where practical. Reuse the existing project templates and dependencies rather than introducing unrelated architecture or libraries.
 
+## Defensive learning requirements
+
+The repository's primary outcome is better Android application security, not attack capability alone. Every topic should help a learner answer:
+
+- What asset and trust boundary are involved, and what must an attacker already be able to do?
+- Which app decision or configuration causes the vulnerable result?
+- What concrete design, manifest, code, protocol, or server-side control reduces the risk?
+- What does that control not protect against?
+- Which negative, malformed-input, replay, and legitimate-use checks verify the defense?
+
+Include a concise secure-development checklist in each topic README and link to authoritative platform or protocol guidance. Clearly separate lessons verified by the lab from general production recommendations, and do not present a minimal lab implementation as production-ready.
+
 ## Making changes
 
 1. Read the root [README](README.md), the relevant topic README, and any implementation plan before editing a lab.

@@ -1,8 +1,18 @@
 # AndSec
 
-AndSec is an educational collection of small, controlled Android security labs. The project explores different vulnerability classes and attack techniques, focusing on how they work, what access they require, what they can affect, and what developers can learn from them.
+AndSec is an educational collection of small, controlled Android security labs. Its primary goal is to help developers **design, implement, and verify secure Android apps**. Each lab uses a vulnerable example to explain a failure mode, then identifies hardened behavior, practical mitigations, and the limits of those defenses.
 
-The goal is to build practical security understanding through reproducible demonstrations—not to provide tools for attacking real apps or users.
+Understanding attack techniques and their preconditions supports that defensive goal. These reproducible demonstrations are not tools for attacking real apps or users.
+
+## How to learn from a lab
+
+1. **Define the security boundary.** Read the threat model and identify the asset, untrusted input or component, attacker preconditions, and intended security property.
+2. **Reproduce the failure.** Run the vulnerable variant and its negative controls. Separate an unsafe app decision from intended Android behavior rather than treating every surprising result as a platform vulnerability.
+3. **Compare the hardened variant.** Identify exactly which control changes the outcome and which risks remain. A routing change, for example, is not necessarily caller authentication or authorization.
+4. **Apply the topic checklist.** Review your own app's manifest, component boundaries, input validation, authentication and authorization, secret handling, and user experience as applicable.
+5. **Verify both directions.** Test that attacks, replay, malformed input, and unauthorized calls fail as expected while legitimate accessibility, sharing, login, and navigation continue to work.
+
+Use each topic's documentation as a learning guide, not as a complete production implementation. Confirm current platform behavior and recommendations in the linked official Android and standards documentation.
 
 ## Project structure
 
@@ -87,7 +97,7 @@ See the [intents topic documentation](intents/README.md) for setup, build instru
 - Use the smallest harmless scenario that illustrates the concept.
 - Record actual observations, including the Android version and negative results.
 - Distinguish intended platform capabilities, unsafe app design, and genuine platform vulnerabilities.
-- Consider defensive lessons without weakening legitimate accessibility or other user-facing functionality.
+- Turn every observation into concrete defensive guidance, including the control's limitations and its effect on legitimate accessibility or other user-facing functionality.
 
 ## Safety and scope
 

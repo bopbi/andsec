@@ -2,7 +2,7 @@
 
 ## Purpose
 
-AndSec is an educational Android security repository for controlled demonstrations of vulnerability classes and attack techniques. Each top-level topic directory covers a different approach. The first topic is accessibility abuse; more topics will be added over time.
+AndSec is an educational Android security repository whose primary goal is to teach developers how to design, implement, and verify secure apps. Controlled demonstrations of vulnerability classes and attack techniques provide the evidence for defensive lessons, hardened variants, and their limitations. Each top-level topic directory covers a different approach. The first topic is accessibility abuse; more topics will be added over time.
 
 ## Repository layout
 
@@ -36,6 +36,7 @@ Treat candidates as possible directions rather than approved implementations. Be
 - Do not target third-party apps, real accounts, credentials, payments, messages, or personal data.
 - Preserve explicit user consent and Android's system-mediated permission flow. Do not add permission bypasses, stealth, persistence, obfuscation, anti-analysis behavior, or data exfiltration.
 - Distinguish abuse of a legitimately authorized capability from an Android platform vulnerability; tie security claims to observed behavior and the tested Android version.
+- Make secure development the learning outcome. Each topic README should explain the vulnerable app decision, provide an actionable secure-development checklist, describe what each defense does not solve, and link to authoritative guidance.
 - Prefer the smallest demonstration that proves the concept. Reuse the project's existing Android/Gradle template versions and conventions rather than introducing unrelated libraries or architecture.
 - Add tests only where the containing project already has tests; otherwise use its existing build, lint, and documented manual verification.
 - Keep plans in the relevant topic's `plan/` directory and keep application code out of plan directories.

@@ -105,6 +105,17 @@ Tested on **2026-11-15** with emulator **Medium_Phone_API_36.1**, **Android 16, 
 
 App-process logs and provider output were inspected after the interception rows. They contained no full callback URI, token, code, `state`, verifier, challenge, or authorization header. The provider was stopped and both lab apps were uninstalled after the matrix.
 
+## Secure development checklist
+
+When implementing browser-based native-app authorization:
+
+- Prefer an authorization-code flow with PKCE using S256, enforced by the authorization server. Do not return access tokens or other bearer secrets in a front-channel redirect.
+- Generate a fresh, cryptographically random `state` for each request, bind it to that pending login, expire it, and consume it before accepting a response. Use an OpenID Connect `nonce` as well when validating ID tokens.
+- Validate the exact callback scheme, host, path, response type, expected parameters, and pending request. Never navigate to a URL supplied by an untrusted callback.
+- Make authorization codes short-lived and one-time, and bind them to the client, exact redirect URI, and PKCE challenge on the server.
+- Use verified HTTPS App Links where their routing properties fit the app, but do not treat them as substitutes for `state`, PKCE, callback validation, or server-side checks.
+- Keep codes, tokens, verifiers, full callback URIs, and authorization headers out of logs and analytics. Test interception, wrong or replayed `state`, wrong callback components, expired requests, incorrect verifiers, and code replay alongside legitimate login.
+
 ## Limitations and related defenses
 
 - PKCE protects an intercepted code at the token endpoint. It does not stop callback interception, select the receiving app, replace `state`, or guarantee login availability.
