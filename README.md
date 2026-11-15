@@ -38,6 +38,7 @@ Each implemented lab should include its own setup, build, verification, and clea
 | **Intents and inter-process communication** | Implicit-intent interception, unsafe extras, intent redirection, mutable `PendingIntent`, and exported activities, services, or broadcast receivers | Candidate |
 | **Content providers and file sharing** | Overly broad provider access, path handling mistakes, `FileProvider` configuration, and URI permission grants | Candidate |
 | **Network security** | Cleartext traffic, incorrect certificate validation, permissive trust managers, and Network Security Configuration using a local test server | Candidate |
+| **Remote configuration and client-side trust** | Feature flags versus authorization, remotely controlled allowlists, configurable endpoint URLs, configuration integrity, and server-side enforcement | Candidate |
 | **UI redressing and overlays** | Tapjacking, obscured touches, overlay preconditions, and defensive filtering of synthetic input | Candidate |
 | **Permissions and confused deputies** | Implicit capability grants, unsafe URI permissions, and least-privilege component design | Candidate |
 
