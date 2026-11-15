@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Accessibility Attacker Lab</string>
+    <string name="lab_title">Attacker Lab — controlled demo</string>
+    <string name="consent_explanation">Manually enable this lab\'s accessibility service in system settings. Installation alone grants no accessibility access. One armed request attempts a single click on the synthetic counter in Victim Lab.</string>
+    <string name="open_accessibility_settings">Open accessibility settings</string>
+    <string name="arm_one_click">Arm one click and open Victim Lab</string>
+    <string name="cancel_armed_click">Cancel armed click</string>
+    <string name="no_click_armed">No click armed.</string>
+    <string name="click_armed">One click armed for 30 seconds.</string>
+    <string name="click_canceled">Armed click canceled.</string>
+    <string name="victim_not_installed">Install Victim Lab first. No click is armed.</string>
+    <string name="accessibility_service_label">Attacker Lab Victim Control</string>
+    <string name="accessibility_service_description">Educational lab service. After explicit arming, attempts one click on the synthetic counter button in Victim Lab only.</string>
+</resources>

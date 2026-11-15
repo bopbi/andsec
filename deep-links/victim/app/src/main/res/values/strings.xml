@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Victim Lab</string>
+    <string name="lab_title">Victim Lab — Browser Login</string>
+    <string name="lab_description">Synthetic data only. No real account or identity provider is used.</string>
+    <string name="vulnerable_flow">Vulnerable token redirect</string>
+    <string name="hardened_flow">Hardened code + PKCE</string>
+    <string name="custom_tab">Chrome Custom Tab</string>
+    <string name="external_browser">External browser</string>
+    <string name="start_login">Start synthetic login</string>
+    <string name="cancel_login">Cancel pending login</string>
+    <string name="initial_status">No login started.</string>
+    <string name="waiting_for_login">Waiting for the synthetic login response.</string>
+    <string name="login_cancelled">Pending login cancelled.</string>
+    <string name="browser_unavailable">No compatible browser is available. Pending login cancelled.</string>
+    <string name="login_success">Signed in as Demo User.</string>
+    <string name="callback_rejected">Callback rejected. No profile loaded.</string>
+    <string name="login_failed">Login request failed. No profile loaded.</string>
+    <string name="processing_callback">Processing the lab callback. Response values are redacted.</string>
+</resources>

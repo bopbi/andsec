@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lab_title"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lab_description" />
+
+        <RadioGroup
+            android:id="@+id/flow_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:checkedButton="@id/vulnerable_flow_button">
+
+            <RadioButton
+                android:id="@+id/vulnerable_flow_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vulnerable_flow" />
+
+            <RadioButton
+                android:id="@+id/hardened_flow_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hardened_flow" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/user_agent_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:checkedButton="@id/custom_tab_button">
+
+            <RadioButton
+                android:id="@+id/custom_tab_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/custom_tab" />
+
+            <RadioButton
+                android:id="@+id/external_browser_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/external_browser" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/start_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/start_login" />
+
+        <Button
+            android:id="@+id/cancel_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/cancel_login" />
+
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/initial_status"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>

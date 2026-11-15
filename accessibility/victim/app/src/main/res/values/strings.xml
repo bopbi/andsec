@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Accessibility Victim Lab</string>
+    <string name="lab_title">Victim Lab — synthetic counter</string>
+    <string name="initial_counter">Demo counter: 0</string>
+    <string name="demo_counter">Demo counter: %1$d</string>
+       <string name="increment_counter">Increment demo counter</string>
+    <string name="reset_counter">Reset demo counter</string>
+    <string name="accessibility_visibility">Expose counter button to accessibility</string>
+</resources>
