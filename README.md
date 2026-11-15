@@ -21,6 +21,11 @@ andsec/
 │   ├── attacker/        # Standalone custom-scheme interception Attacker Lab project
 │   ├── mock-provider/   # Local synthetic authorization and profile server
 │   └── plan/            # Implementation plans and execution records
+├── intents/             # Intent and inter-process communication labs
+│   ├── README.md        # Topic overview and verification results
+│   ├── victim/          # Standalone implicit/explicit sender Victim Lab project
+│   ├── attacker/        # Standalone matching-action Attacker Lab project
+│   └── plan/            # Implementation plans and execution records
 ├── <future-topic>/      # Added when work on another topic begins
 │   ├── README.md
 │   └── plan/
@@ -35,7 +40,7 @@ Each implemented lab should include its own setup, build, verification, and clea
 | --- | --- | --- |
 | **Accessibility abuse** | Cross-app UI interaction after explicit service authorization, visibility controls, and negative controls | **Implemented; verified on Android 17 / API 37** |
 | **Deep links and app links** | Browser and Chrome Custom Tab login redirects, custom-scheme interception, unvalidated callback parameters, `state` binding, authorization codes with PKCE, and verified versus unverified app links | **Implemented; verified on Android 16 / API 36** |
-| **Intents and inter-process communication** | Implicit-intent interception, unsafe extras, intent redirection, mutable `PendingIntent`, and exported activities, services, or broadcast receivers | Candidate |
+| **Intents and inter-process communication** | Implicit-intent interception, unsafe extras, intent redirection, mutable `PendingIntent`, and exported activities, services, or broadcast receivers | **Implemented; verified on Android 17 / API 37** |
 | **Content providers and file sharing** | Overly broad provider access, path handling mistakes, `FileProvider` configuration, and URI permission grants | Candidate |
 | **Network security** | Cleartext traffic, incorrect certificate validation, permissive trust managers, and Network Security Configuration using a local test server | Candidate |
 | **Remote configuration and client-side trust** | Feature flags versus authorization, remotely controlled allowlists, configurable endpoint URLs, configuration integrity, and server-side enforcement | Candidate |
@@ -68,6 +73,14 @@ Both variants use fresh `state` values and exact callback validation. The topic 
 
 See the [deep-links topic documentation](deep-links/README.md) for setup and verified API 36 results, or the [browser login redirect lab plan](deep-links/plan/2026-11-14-browser-login-redirect-demo.md) for the threat model, limitations, and execution record.
 
+## Implemented topic: implicit intent interception
+
+The intents topic uses two synthetic, separately installed apps to compare an implicit activity intent with an explicit-component intent. Both variants carry only the fixed synthetic report `ANDSEC-DEMO-REPORT-001`. Attacker Lab claims the same custom action and demonstrates disclosure if Android routes the vulnerable intent to it; explicit selection in a chooser is not evidence of guaranteed automatic interception.
+
+The hardened variant names Victim `ReportActivity` directly. This selects its destination without authenticating callers or preventing direct invocation of that exported activity.
+
+See the [intents topic documentation](intents/README.md) for setup, build instructions, the verification matrix, and verified API 37 results, or the [implicit intent interception lab plan](intents/plan/2026-11-15-implicit-intent-interception.md) for the design and execution record.
+
 ## Learning principles
 
 - Understand the preconditions and security boundaries behind each demonstration.
@@ -87,7 +100,7 @@ Do not add permission bypasses, stealth, persistence, obfuscation, anti-analysis
 ### Prerequisites
 
 - **JDK 17** for running Gradle. The Android projects compile Java/Kotlin sources for Java 17 and include their own Gradle wrappers; a separate Gradle installation is not needed.
-- **Android SDK**, including Platform 37.0 for the accessibility labs and Platform 36.1 for the deep-links labs, plus Platform Tools (`adb`). Install Build Tools and an emulator/system image when using the device instructions. Android Studio's SDK Manager can install these packages.
+- **Android SDK**, including Platform 37.0 for the accessibility and intents labs and Platform 36.1 for the deep-links labs, plus Platform Tools (`adb`). Install Build Tools and an emulator/system image when using the device instructions. Android Studio's SDK Manager can install these packages.
 - **Python 3** for the deep-links mock provider.
 - **Android CLI** for the `android` emulator, installation, and layout commands in the topic guides. It is not required for Gradle builds; equivalent Android Studio and `adb` workflows can be used.
 

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Intent Attacker Lab</string>
+    <string name="lab_title">Intent Attacker Lab</string>
+    <string name="lab_description">This lab app claims the same custom action and displays only the fixed synthetic report if Android routes it here.</string>
+    <string name="initial_status">No lab report received. Launching this app normally does not load stored content.</string>
+    <string name="intercepted_report">Intercepted synthetic report: %1$s</string>
+    <string name="invalid_report">Invalid report request. No report displayed.</string>
+</resources>
