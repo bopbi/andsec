@@ -112,6 +112,8 @@ See the [content-providers topic documentation](content-providers/README.md) for
 - Distinguish intended platform capabilities, unsafe app design, and genuine platform vulnerabilities.
 - Turn every observation into concrete defensive guidance, including the control's limitations and its effect on legitimate accessibility or other user-facing functionality.
 
+See the [security research references](REFERENCES.md) for a curated cross-topic catalog that supplements, rather than replaces, the references in each topic guide.
+
 ## Safety and scope
 
 All labs must remain limited to synthetic apps and harmless data on a dedicated emulator or non-personal test device. They must not target third-party apps, real accounts, credentials, messages, payments, or personal data.
