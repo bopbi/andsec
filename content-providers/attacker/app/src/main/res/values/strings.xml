@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Provider Attacker Lab</string>
+    <string name="lab_title">Provider Attacker Lab</string>
+    <string name="lab_description">This separate lab app attempts direct reads of two known report URIs. The hardened read succeeds only after Victim Lab explicitly shares its exact URI.</string>
+    <string name="read_vulnerable">Read exported provider</string>
+    <string name="read_hardened">Read hardened FileProvider URI</string>
+    <string name="initial_status">No lab read attempted. Normal startup does not load stored report content.</string>
+    <string name="hardened_share_received">Hardened share received; press read.</string>
+    <string name="invalid_share">Invalid hardened share. No report displayed.</string>
+    <string name="report_read">Synthetic report: %1$s</string>
+    <string name="invalid_report">Invalid report content. No report displayed.</string>
+    <string name="vulnerable_read_denied">Vulnerable provider read denied. No report displayed.</string>
+    <string name="hardened_read_denied">Hardened FileProvider read denied. No report displayed.</string>
+    <string name="vulnerable_read_failed">Vulnerable provider read failed. No report displayed.</string>
+    <string name="hardened_read_failed">Hardened FileProvider read failed. No report displayed.</string>
+</resources>

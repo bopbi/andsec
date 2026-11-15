@@ -36,6 +36,11 @@ andsec/
 │   ├── victim/          # Standalone implicit/explicit sender Victim Lab project
 │   ├── attacker/        # Standalone matching-action Attacker Lab project
 │   └── plan/            # Implementation plans and execution records
+├── content-providers/   # Content provider and secure file-sharing labs
+│   ├── README.md        # Topic overview and verification results
+│   ├── victim/          # Standalone provider/sharing Victim Lab Android project
+│   ├── attacker/        # Standalone direct-reading Attacker Lab Android project
+│   └── plan/            # Implementation plans and execution records
 ├── <future-topic>/      # Added when work on another topic begins
 │   ├── README.md
 │   └── plan/
@@ -51,7 +56,7 @@ Each implemented lab should include its own setup, build, verification, and clea
 | **Accessibility abuse** | Cross-app UI interaction after explicit service authorization, visibility controls, and negative controls | **Implemented; verified on Android 17 / API 37** |
 | **Deep links and app links** | Browser and Chrome Custom Tab login redirects, custom-scheme interception, unvalidated callback parameters, `state` binding, authorization codes with PKCE, and verified versus unverified app links | **Implemented; verified on Android 16 / API 36** |
 | **Intents and inter-process communication** | Implicit-intent interception, unsafe extras, intent redirection, mutable `PendingIntent`, and exported activities, services, or broadcast receivers | **Implemented; verified on Android 17 / API 37** |
-| **Content providers and file sharing** | Overly broad provider access, path handling mistakes, `FileProvider` configuration, and URI permission grants | Candidate |
+| **Content providers and file sharing** | Overly broad provider access, path handling mistakes, `FileProvider` configuration, and URI permission grants | **Implemented; verified on Android 17 / API 37** |
 | **Network security** | Cleartext traffic, incorrect certificate validation, permissive trust managers, and Network Security Configuration using a local test server | Candidate |
 | **Remote configuration and client-side trust** | Feature flags versus authorization, remotely controlled allowlists, configurable endpoint URLs, configuration integrity, and server-side enforcement | Candidate |
 | **UI redressing and overlays** | Tapjacking, obscured touches, overlay preconditions, and defensive filtering of synthetic input | Candidate |
@@ -91,6 +96,14 @@ The hardened variant names Victim `ReportActivity` directly. This selects its de
 
 See the [intents topic documentation](intents/README.md) for setup, build instructions, the verification matrix, and verified API 37 results, or the [implicit intent interception lab plan](intents/plan/2026-11-15-implicit-intent-interception.md) for the design and execution record.
 
+## Implemented topic: content providers and secure file sharing
+
+The content-providers topic uses two synthetic, separately installed apps to expose the same fixed report through two provider configurations. The vulnerable provider is unnecessarily exported without caller authorization, allowing a direct cross-app read despite private internal file storage. The hardened path uses a non-exported `FileProvider`, a narrow directory mapping, and a user-initiated explicit intent that grants Attacker Lab read-only access to one exact URI.
+
+Attacker Lab demonstrates denial before sharing, success after the explicit share, denial after explicit revocation, and renewed access after a fresh share. Revoking the hardened grant intentionally does not change the separate vulnerable provider.
+
+See the [content-providers topic documentation](content-providers/README.md) for setup, build instructions, the verification matrix, and verified API 37 results, or the [content-provider file-sharing lab plan](content-providers/plan/2026-11-15-content-provider-file-sharing.md) for the design and execution record.
+
 ## Learning principles
 
 - Understand the preconditions and security boundaries behind each demonstration.
@@ -110,7 +123,7 @@ Do not add permission bypasses, stealth, persistence, obfuscation, anti-analysis
 ### Prerequisites
 
 - **JDK 17** for running Gradle. The Android projects compile Java/Kotlin sources for Java 17 and include their own Gradle wrappers; a separate Gradle installation is not needed.
-- **Android SDK**, including Platform 37.0 for the accessibility and intents labs and Platform 36.1 for the deep-links labs, plus Platform Tools (`adb`). Install Build Tools and an emulator/system image when using the device instructions. Android Studio's SDK Manager can install these packages.
+- **Android SDK**, including Platform 37.0 for the accessibility, intents, and content-provider labs and Platform 36.1 for the deep-links labs, plus Platform Tools (`adb`). Install Build Tools and an emulator/system image when using the device instructions. Android Studio's SDK Manager can install these packages.
 - **Python 3** for the deep-links mock provider.
 - **Android CLI** for the `android` emulator, installation, and layout commands in the topic guides. It is not required for Gradle builds; equivalent Android Studio and `adb` workflows can be used.
 

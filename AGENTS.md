@@ -19,14 +19,18 @@ AndSec is an educational Android security repository whose primary goal is to te
 - `intents/plan/` — implementation plans and execution records for intent demonstrations.
 - `intents/victim/` — standalone implicit/explicit sender Victim Lab Android project.
 - `intents/attacker/` — standalone matching-action Attacker Lab Android project.
+- `content-providers/` — content-provider and secure file-sharing labs and documentation.
+- `content-providers/plan/` — implementation plans and execution records for content-provider demonstrations.
+- `content-providers/victim/` — standalone provider/sharing Victim Lab Android project.
+- `content-providers/attacker/` — standalone direct-reading Attacker Lab Android project.
 - Future vulnerability classes should live in their own descriptive top-level directories with a topic `README.md` and a `plan/` directory when implementation planning is needed.
 - `AGENTS.md` is the canonical agent guide; provider-specific guide files are relative symlinks to it.
 
-The accessibility demo is implemented as two independent Android projects, `accessibility/victim/` and `accessibility/attacker/`, using Kotlin and traditional Android Views. Its setup and API 37 verification results are in `accessibility/README.md`. The browser-login redirect demo is implemented as two independent Android projects plus a local mock provider under `deep-links/`, comparing a vulnerable custom-scheme token redirect with an authorization-code flow protected by PKCE. Its setup and API 36 verification results are in `deep-links/README.md`. The implicit activity intent demo is implemented as two independent Android projects under `intents/`, comparing implicit routing with explicit component targeting. Its setup and API 37 verification results are in `intents/README.md`. Read the relevant plan and topic README before changing a lab.
+The accessibility demo is implemented as two independent Android projects, `accessibility/victim/` and `accessibility/attacker/`, using Kotlin and traditional Android Views. Its setup and API 37 verification results are in `accessibility/README.md`. The browser-login redirect demo is implemented as two independent Android projects plus a local mock provider under `deep-links/`, comparing a vulnerable custom-scheme token redirect with an authorization-code flow protected by PKCE. Its setup and API 36 verification results are in `deep-links/README.md`. The implicit activity intent demo is implemented as two independent Android projects under `intents/`, comparing implicit routing with explicit component targeting. Its setup and API 37 verification results are in `intents/README.md`. The content-provider demo is implemented as two independent Android projects under `content-providers/`, comparing an unnecessarily exported unprotected provider with a non-exported `FileProvider` and explicit read-only URI grants/revocation. Its setup and API 37 verification results are in `content-providers/README.md`. Read the relevant plan and topic README before changing a lab.
 
 ## Topic roadmap
 
-The root `README.md` tracks candidate topics and their status. Accessibility, deep links/app links, and the first implicit intent interception lab have implemented demonstrations. Other candidates include additional intents and inter-process communication scenarios, content providers and file sharing, WebView and JavaScript bridges, data storage and backup, network security, remote configuration and client-side trust, UI redressing and overlays, and permissions and confused-deputy scenarios. The deep-links topic specifically covers Chrome Custom Tabs and external-browser login redirects; its first lab isolates custom-scheme interception and PKCE while documenting `state`, callback validation, OpenID Connect `nonce`, and verified App Links as related concerns.
+The root `README.md` tracks candidate topics and their status. Accessibility, deep links/app links, the first implicit intent interception lab, and the first content-provider/file-sharing lab have implemented demonstrations. Other candidates include additional intents and inter-process communication scenarios, WebView and JavaScript bridges, data storage and backup, network security, remote configuration and client-side trust, UI redressing and overlays, and permissions and confused-deputy scenarios. The deep-links topic specifically covers Chrome Custom Tabs and external-browser login redirects; its first lab isolates custom-scheme interception and PKCE while documenting `state`, callback validation, OpenID Connect `nonce`, and verified App Links as related concerns.
 
 Treat candidates as possible directions rather than approved implementations. Before starting a new topic, create or update its topic overview and plan, define a minimal threat model and verification matrix, and record the resulting status in the root roadmap. Do not create all candidate topic directories at once. Prefer a narrowly scoped lab with vulnerable and hardened variants over a broad collection of loosely related examples.
 
@@ -62,6 +66,13 @@ For the implicit intent interception apps, use the equivalent project-local chec
 ```bash
 cd intents/victim && ./gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
 cd intents/attacker && ./gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
+```
+
+For the content-provider and file-sharing apps, use the equivalent project-local checks:
+
+```bash
+cd content-providers/victim && ./gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
+cd content-providers/attacker && ./gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
 ```
 
 Device-dependent security behavior must be checked on a dedicated emulator or non-personal test device. Follow the lab's verification matrix, record actual outcomes and API levels, and disable or uninstall test services and apps during cleanup. Do not claim device scenarios are verified when only static builds have run.

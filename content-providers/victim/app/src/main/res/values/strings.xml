@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Provider Victim Lab</string>
+    <string name="lab_title">Provider Victim Lab</string>
+    <string name="lab_description">This lab owns one fixed synthetic report: ANDSEC-DEMO-REPORT-001. It is stored in private internal storage.</string>
+    <string name="vulnerable_provider_description">Deliberately vulnerable: an exported, unprotected provider lets other apps read the report directly.</string>
+    <string name="hardened_provider_description">Hardened sharing: a non-exported FileProvider grants Attacker Lab read-only access to the exact report URI only after your action.</string>
+    <string name="share_hardened">Share hardened report with Attacker Lab</string>
+    <string name="revoke_hardened">Revoke hardened report access</string>
+    <string name="initial_status">No hardened share sent. The exported provider remains deliberately readable.</string>
+    <string name="hardened_share_sent">Hardened report shared with Attacker Lab using read-only access.</string>
+    <string name="attacker_unavailable">Attacker Lab is unavailable. No report was shared.</string>
+    <string name="hardened_access_revoked">Hardened report access revoked.</string>
+</resources>
