@@ -61,6 +61,7 @@ Each implemented lab should include its own setup, build, verification, and clea
 | **Remote configuration and client-side trust** | Feature flags versus authorization, remotely controlled allowlists, configurable endpoint URLs, configuration integrity, and server-side enforcement | Candidate |
 | **UI redressing and overlays** | Tapjacking, obscured touches, overlay preconditions, and defensive filtering of synthetic input | Candidate |
 | **Permissions and confused deputies** | Implicit capability grants, unsafe URI permissions, and least-privilege component design | Candidate |
+| **WebView and JavaScript bridges** | Unsafe `addJavascriptInterface` exposure, bridge method authorization, untrusted WebView URL/content handling, file-access and mixed-content settings, and bridge-message validation | Candidate |
 
 Topics can be split or combined as needed to make each lesson clear. Every lab should compare vulnerable and hardened behavior where practical and identify whether the issue comes from app configuration, app code, platform behavior, or an explicitly authorized capability.
 
